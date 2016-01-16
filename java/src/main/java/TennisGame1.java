@@ -1,12 +1,20 @@
+import formatter.ScoreFormatter;
+
 
 public class TennisGame1 implements TennisGame {
 
     private Player firstPlayer;
     private Player secondPlayer;
+    private ScoreFormatter scoreFormatter;
 
     public TennisGame1(String firstPlayerName, String secondPlayerName) {
-        this.firstPlayer = new Player(firstPlayerName);
-        this.secondPlayer = new Player(secondPlayerName);
+        this(new Player(firstPlayerName), new Player(secondPlayerName), new ScoreFormatter());
+    }
+
+    public TennisGame1(Player firstPlayer, Player secondPlayer, ScoreFormatter scoreFormatter) {
+        this.firstPlayer = firstPlayer;
+        this.secondPlayer = secondPlayer;
+        this.scoreFormatter = scoreFormatter;
     }
 
     public void wonPoint(String name) {
@@ -22,7 +30,7 @@ public class TennisGame1 implements TennisGame {
         String score = "";
         int tempScore=0;
         if (firstPlayer.hasSameScoreOf(secondPlayer)) {
-            score = formatTieScore(firstPlayer.getScore());
+            score = scoreFormatter.formatTie(firstPlayer.getScore());
         }
         else if (firstPlayer.getScore()>=4 || secondPlayer.getScore()>=4)
         {
@@ -56,25 +64,5 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
-    }
-
-    private String formatTieScore(int score) {
-        String formattedScore = "";
-        switch (score)
-        {
-            case 0:
-                formattedScore = "Love-All";
-                break;
-            case 1:
-                formattedScore = "Fifteen-All";
-                break;
-            case 2:
-                formattedScore = "Thirty-All";
-                break;
-            default:
-                formattedScore = "Deuce";
-                break; 
-        }
-        return formattedScore;
     }
 }
