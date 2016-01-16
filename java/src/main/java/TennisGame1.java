@@ -21,23 +21,8 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         String score = "";
         int tempScore=0;
-        if (firstPlayer.hasSameScoreOf(secondPlayer)){
-            switch (firstPlayer.getScore())
-            {
-                case 0:
-                        score = "Love-All";
-                    break;
-                case 1:
-                        score = "Fifteen-All";
-                    break;
-                case 2:
-                        score = "Thirty-All";
-                    break;
-                default:
-                        score = "Deuce";
-                    break;
-                
-            }
+        if (firstPlayer.hasSameScoreOf(secondPlayer)) {
+            score = formatTieScore(firstPlayer.getScore());
         }
         else if (firstPlayer.getScore()>=4 || secondPlayer.getScore()>=4)
         {
@@ -71,5 +56,25 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private String formatTieScore(int score) {
+        String formattedScore = "";
+        switch (score)
+        {
+            case 0:
+                formattedScore = "Love-All";
+                break;
+            case 1:
+                formattedScore = "Fifteen-All";
+                break;
+            case 2:
+                formattedScore = "Thirty-All";
+                break;
+            default:
+                formattedScore = "Deuce";
+                break; 
+        }
+        return formattedScore;
     }
 }
