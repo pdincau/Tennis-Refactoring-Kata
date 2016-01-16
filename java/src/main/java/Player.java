@@ -11,4 +11,8 @@ public class Player {
         return name;
     }
 
+    public boolean hasName(String name) {
+        return getName().equals(name);
+    }
+
 }

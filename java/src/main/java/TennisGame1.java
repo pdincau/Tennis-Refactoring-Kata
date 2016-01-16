@@ -12,9 +12,10 @@ public class TennisGame1 implements TennisGame {
     }
 
     public void wonPoint(String name) {
-        if (isFirstPlayerName(name)) {
+        if (firstPlayer.hasName(name)) {
             m_score1 += 1;
-        } else {
+        }
+        if (secondPlayer.hasName(name)) {
             m_score2 += 1;
         }
     }
@@ -73,9 +74,5 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
-    }
-
-    private boolean isFirstPlayerName(String name) {
-        return firstPlayer.getName().equals(name);
     }
 }
