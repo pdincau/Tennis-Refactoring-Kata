@@ -3,19 +3,20 @@ public class TennisGame1 implements TennisGame {
     
     private int m_score1 = 0;
     private int m_score2 = 0;
-    private String player1Name;
-    private String player2Name;
+    private Player firstPlayer;
+    private Player secondPlayer;
 
-    public TennisGame1(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+    public TennisGame1(String firstPlayerName, String secondPlayerName) {
+        this.firstPlayer = new Player(firstPlayerName);
+        this.secondPlayer = new Player(secondPlayerName);
     }
 
-    public void wonPoint(String playerName) {
-        if (playerName == "player1")
+    public void wonPoint(String name) {
+        if (isFirstPlayerName(name)) {
             m_score1 += 1;
-        else
+        } else {
             m_score2 += 1;
+        }
     }
 
     public String getScore() {
@@ -72,5 +73,9 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private boolean isFirstPlayerName(String name) {
+        return firstPlayer.getName().equals(name);
     }
 }
