@@ -28,7 +28,6 @@ public class TennisGame1 implements TennisGame {
 
     public String getScore() {
         String score = "";
-        int tempScore=0;
         if (firstPlayer.hasSameScoreOf(secondPlayer)) {
             score = scoreFormatter.formatTie(firstPlayer.getScore());
         }
@@ -40,8 +39,8 @@ public class TennisGame1 implements TennisGame {
             else if (minusResult>=2) score = "Win for player1";
             else score ="Win for player2";
         }
-        else
-        {
+        else {
+            int tempScore=0;
             for (int i=1; i<3; i++)
             {
                 if (i==1) tempScore = firstPlayer.getScore();
