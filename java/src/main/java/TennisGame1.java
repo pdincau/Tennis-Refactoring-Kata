@@ -31,7 +31,7 @@ public class TennisGame1 implements TennisGame {
         if (firstPlayer.hasSameScoreOf(secondPlayer)) {
             score = scoreFormatter.formatTie(firstPlayer.getScore());
         }
-        else if (firstPlayer.getScore()>=4 || secondPlayer.getScore()>=4)
+        else if (isWonOrInAdvantage())
         {
             int minusResult = firstPlayer.getScore()-secondPlayer.getScore();
             if (minusResult==1) score ="Advantage player1";
@@ -63,5 +63,9 @@ public class TennisGame1 implements TennisGame {
             }
         }
         return score;
+    }
+
+    private boolean isWonOrInAdvantage() {
+        return firstPlayer.getScore() >= 4 || secondPlayer.getScore() >= 4;
     }
 }
