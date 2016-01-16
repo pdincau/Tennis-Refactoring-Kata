@@ -25,4 +25,8 @@ public class Player {
         score += 1;
     }
 
+    public boolean hasSameScoreOf(Player otherPlayer) {
+        return getScore() == otherPlayer.getScore();
+    }
+
 }

@@ -21,8 +21,7 @@ public class TennisGame1 implements TennisGame {
     public String getScore() {
         String score = "";
         int tempScore=0;
-        if (firstPlayer.getScore() == secondPlayer.getScore())
-        {
+        if (firstPlayer.hasSameScoreOf(secondPlayer)){
             switch (firstPlayer.getScore())
             {
                 case 0:
