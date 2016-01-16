@@ -25,4 +25,23 @@ public class ScoreFormatter {
         }
         return formattedScore;
     }
+
+    public String formatWinOrAdvantage(int firstPlayerScore, int secondPlayerScore) {
+        String formattedScore = "";
+        int scoreDifference = firstPlayerScore - secondPlayerScore;
+
+        if (scoreDifference == 1)
+            formattedScore = "Advantage player1";
+
+        if (scoreDifference == -1)
+            formattedScore = "Advantage player2";
+
+        if (scoreDifference >= 2)
+            formattedScore = "Win for player1";
+
+        if (scoreDifference <= -2)
+            formattedScore = "Win for player2";
+
+        return formattedScore;
+    }
 }

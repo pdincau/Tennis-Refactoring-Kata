@@ -27,19 +27,13 @@ public class TennisGame1 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
-        if (firstPlayer.hasSameScoreOf(secondPlayer)) {
-            score = scoreFormatter.formatTie(firstPlayer.getScore());
+        if (isTie()) {
+            return scoreFormatter.formatTie(firstPlayer.getScore());
         }
-        else if (isWonOrInAdvantage())
-        {
-            int minusResult = firstPlayer.getScore()-secondPlayer.getScore();
-            if (minusResult==1) score ="Advantage player1";
-            else if (minusResult ==-1) score ="Advantage player2";
-            else if (minusResult>=2) score = "Win for player1";
-            else score ="Win for player2";
-        }
-        else {
+        if (isWonOrInAdvantage()) {
+            return scoreFormatter.formatWinOrAdvantage(firstPlayer.getScore(), secondPlayer.getScore());
+        } else {
+            String score = "";
             int tempScore=0;
             for (int i=1; i<3; i++)
             {
@@ -61,8 +55,12 @@ public class TennisGame1 implements TennisGame {
                         break;
                 }
             }
+            return score;
         }
-        return score;
+    }
+
+    private boolean isTie() {
+        return firstPlayer.hasSameScoreOf(secondPlayer);
     }
 
     private boolean isWonOrInAdvantage() {
