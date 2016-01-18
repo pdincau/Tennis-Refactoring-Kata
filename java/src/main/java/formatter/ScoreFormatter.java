@@ -2,6 +2,10 @@ package formatter;
 
 public class ScoreFormatter {
 
+    private static final String VICTORY_SECOND_PLAYER = "Win for player2";
+    private static final String VICTORY_FIRST_PLAYER = "Win for player1";
+    private static final String ADVANTAGE_SECOND_PLAYER = "Advantage player2";
+    private static final String ADVANTAGE_FIRST_PLAYER = "Advantage player1";
     private static final String DEUCE = "Deuce";
     private static final String THIRTY_ALL = "Thirty-All";
     private static final String FIFTEEN_ALL = "Fifteen-All";
@@ -31,16 +35,16 @@ public class ScoreFormatter {
         int scoreDifference = firstPlayerScore - secondPlayerScore;
 
         if (scoreDifference == 1)
-            formattedScore = "Advantage player1";
+            formattedScore = ADVANTAGE_FIRST_PLAYER;
 
         if (scoreDifference == -1)
-            formattedScore = "Advantage player2";
+            formattedScore = ADVANTAGE_SECOND_PLAYER;
 
         if (scoreDifference >= 2)
-            formattedScore = "Win for player1";
+            formattedScore = VICTORY_FIRST_PLAYER;
 
         if (scoreDifference <= -2)
-            formattedScore = "Win for player2";
+            formattedScore = VICTORY_SECOND_PLAYER;
 
         return formattedScore;
     }
